@@ -1,0 +1,14 @@
+tr {
+  cursor: pointer;
+}
+tr.selected td {
+  background-color: #e2d3ff;
+}
+.status {
+  color: #c2c2c2;
+  margin-right: 5px;
+}
+
+.status.active {
+  color: #712cf9;
+}
