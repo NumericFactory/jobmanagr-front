@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { JobModel } from '../../models/job.model';
+import { JobModel } from 'src/app/core/models/job.model';
 
 @Component({
   selector: 'app-mailto',

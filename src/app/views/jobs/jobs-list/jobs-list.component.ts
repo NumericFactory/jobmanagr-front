@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { JobModel } from 'src/app/shared/models/job.model';
-import { JobService } from 'src/app/shared/services/job.service';
+import { JobModel } from 'src/app/core/models/job.model';
+import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 
 @Component({
   selector: 'app-jobs-list',
@@ -11,13 +11,13 @@ export class JobsListComponent {
   jobs: JobModel[] = [];
   jobSelected!: JobModel;
 
-  constructor(private jobSvc: JobService) {}
+  constructor(private jobGateway: JobGateway) {}
 
   ngOnInit() {
     // request
-    this.jobSvc.getJobs();
+    this.jobGateway.getJobs();
 
-    this.jobSvc.jobs.subscribe({
+    this.jobGateway.jobs$.subscribe({
       next: (data) => (this.jobs = data),
     });
   }
@@ -34,10 +34,10 @@ export class JobsListComponent {
         specialities: [],
         status: 0,
       };
-      this.jobSvc.getJob(this.jobSelected);
+      this.jobGateway.getJob(this.jobSelected);
     } else {
       this.jobSelected = job;
-      this.jobSvc.getJob(job);
+      this.jobGateway.getJob(job);
     }
   }
 

@@ -6,7 +6,7 @@ import {
   Inject,
   EventEmitter,
 } from '@angular/core';
-import { ModalDialogComponent } from '../../../shared/components/modal-dialog/modal-dialog.component';
+import { ModalDialogAddJobFormComponent } from 'src/app/views/jobs/modal-dialog-add-job-form/modal-dialog-add-job-form.component';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -46,7 +46,7 @@ export class ContextmenuComponent {
     console.log(this.contextMenuIsOpenedEvent);
     this.contextMenuIsOpenedEvent.emit(false);
     console.log('open');
-    const dialogRef = this.dialog.open(ModalDialogComponent, {
+    const dialogRef = this.dialog.open(ModalDialogAddJobFormComponent, {
       data: { name: this.name, animal: this.animal },
       width: '1200px',
       height: '550px',

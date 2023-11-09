@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TalentModel } from 'src/app/shared/models/talent.model';
-import { JobModel } from 'src/app/shared/models/job.model';
-import { TalentService } from 'src/app/shared/services/talent.service';
-import { JobService } from 'src/app/shared/services/job.service';
+import { TalentModel } from 'src/app/core/models/talent.model';
+import { JobModel } from 'src/app/core/models/job.model';
+import { TalentGateway } from 'src/app/core/ports/talents.gateway';
+import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 
 @Component({
   selector: 'app-talents-list',
@@ -14,19 +14,19 @@ export class TalentsListComponent implements OnInit {
   selectedJob!: JobModel;
 
   constructor(
-    private talentSvc: TalentService,
-    private jobSvc: JobService,
+    private talentGateway: TalentGateway,
+    private jobGateway: JobGateway,
   ) {}
 
   ngOnInit() {
     // request
-    this.talentSvc.getTalents();
+    this.talentGateway.getTalents();
 
-    this.talentSvc.talents.subscribe({
+    this.talentGateway.talents$.subscribe({
       next: (data: any) => (this.talents = data),
     });
 
-    this.jobSvc.job.subscribe({
+    this.jobGateway.selectedJob$.subscribe({
       next: (job) => (this.selectedJob = job),
     });
   }

@@ -1,5 +1,5 @@
-import { TalentModel } from './shared/models/talent.model';
-import { JobModel } from './shared/models/job.model';
+import { TalentModel } from './core/models/talent.model';
+import { JobModel } from './core/models/job.model';
 
 export let jobsData: JobModel[] = [
   {
