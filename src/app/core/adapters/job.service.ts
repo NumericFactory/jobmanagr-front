@@ -17,7 +17,7 @@ export class JobService implements JobGateway {
   private _selectedJob$$ = new Subject<JobModel>();
   public selectedJob$ = this._selectedJob$$.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getJobs(): void {
     this.http

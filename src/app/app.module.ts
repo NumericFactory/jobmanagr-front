@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -26,12 +26,14 @@ import { TalentGateway } from './core/ports/talents.gateway';
     AppComponent,
     NavComponent,
 
-    TalentsListComponent,
     JobsListComponent,
+    ModalDialogAddJobFormComponent,
+    TalentsListComponent,
+    TalentsFormComponent,
 
     MailtoComponent,
     ContextmenuComponent,
-    ModalDialogAddJobFormComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -41,9 +43,9 @@ import { TalentGateway } from './core/ports/talents.gateway';
     MatDialogModule,
   ],
   providers: [
-    { provide: JobGateway, useValue: JobService },
-    { provide: TalentGateway, useValue: TalentService },
+    { provide: JobGateway, useClass: JobService },
+    { provide: TalentGateway, useClass: TalentService },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
