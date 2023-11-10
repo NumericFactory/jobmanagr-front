@@ -43,7 +43,7 @@
             </td>
             <td>{{job.customer?.name | titlecase}}</td>
             <td>{{job.duration}} jours</td>
-            <td>15/09/2023</td>
+            <td>{{job.startDate ? (job.startDate | date:'dd/MM/yyyy') : 'à voir' }}</td>
 
             <td>
                 <div class="d-flex">
