@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 
 import { JobsListComponent } from 'src/app/views/jobs/jobs-list/jobs-list.component';
 import { ModalDialogAddJobFormComponent } from 'src/app/views/jobs/modal-dialog-add-job-form/modal-dialog-add-job-form.component';

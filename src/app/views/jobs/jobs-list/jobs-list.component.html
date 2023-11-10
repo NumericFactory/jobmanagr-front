@@ -1,4 +1,4 @@
-<table style="border: 1px solid #0000002" class="table table-hover">
+<table style="border: 1px solid #000002;" class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Job</th>
@@ -9,55 +9,71 @@
             <th scope="col">Specialités</th>
             <th style="text-align:center" scope="col">Remote</th>
         </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
+        <tr *ngIf="jobs.length===0">No jobs</tr>
         <tr [class.selected]="jobSelected==job" (click)="selectJob(job)" *ngFor="let job of jobs">
-            <td><div class="d-flex flex-column">
-                <span>{{job.title | titlecase}}</span>
-                <span data-bs-toggle="tooltip" data-bs-title="Default tooltip" [title]="getStatusTitleText(job)">
-                    <svg title="à traiter" [class.active]="job.status==0" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="status bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                    </svg>
-                    <svg title="en cours" [class.active]="job.status==1" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="status bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                    </svg>
-                    <svg title="contractualisé" [class.active]="job.status==2" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="status bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                    </svg>
-                    <svg title="mission terminée" [class.active]="job.status==3" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="status bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                    </svg>
-                </span>
-            </div></td>
+            <td>
+                <div class="d-flex flex-column">
+                    <span>{{job.title | titlecase}}</span>
+                    <span data-bs-toggle="tooltip" data-bs-title="Default tooltip" [title]="getStatusTitleText(job)">
+                        <svg title="à traiter" [class.active]="job.status==0" xmlns="http://www.w3.org/2000/svg"
+                            width="10" height="10" fill="currentColor" class="status bi bi-circle-fill"
+                            viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8" />
+                        </svg>
+                        <svg title="en cours" [class.active]="job.status==1" xmlns="http://www.w3.org/2000/svg"
+                            width="10" height="10" fill="currentColor" class="status bi bi-circle-fill"
+                            viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8" />
+                        </svg>
+                        <svg title="contractualisé" [class.active]="job.status==2" xmlns="http://www.w3.org/2000/svg"
+                            width="10" height="10" fill="currentColor" class="status bi bi-circle-fill"
+                            viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8" />
+                        </svg>
+                        <svg title="mission terminée" [class.active]="job.status==3" xmlns="http://www.w3.org/2000/svg"
+                            width="10" height="10" fill="currentColor" class="status bi bi-circle-fill"
+                            viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8" />
+                        </svg>
+                    </span>
+                </div>
+            </td>
             <td>{{job.customer?.name | titlecase}}</td>
             <td>{{job.duration}} jours</td>
             <td>15/09/2023</td>
 
             <td>
                 <div class="d-flex">
-                    <span style="font-weight:bold">{{job.tjmin}}</span> 
+                    <span style="font-weight:bold">{{job.tjmin}}</span>
                     <span class="unity">€HT/j</span>
                 </div>
-                  <div class="d-flex">
-                    <span style="font-weight:bold">{{job.tjmax}}</span> 
+                <div class="d-flex">
+                    <span style="font-weight:bold">{{job.tjmax}}</span>
                     <span class="unity">€HT/j</span>
                 </div>
-            </td> 
-                                 
+            </td>
+
             <td>
-                <span class="badge rounded-pill text-bg-dark me-1" *ngFor="let spe of job.specialities">{{spe.title | titlecase}}</span>
+                <span class="badge rounded-pill text-bg-dark me-1" *ngFor="let spe of job.specialities">{{spe.title |
+                    titlecase}}</span>
             </td>
 
             <td style="text-align:center">
-                <svg style="color:#712cf9" *ngIf="job.isRemote" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                <svg style="color:#00d3c8" *ngIf="job.isRemote" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path
+                        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
                 </svg>
-                <svg  *ngIf="!job.isRemote" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                <svg style="color:#c86c6c" *ngIf="!job.isRemote" xmlns="http://www.w3.org/2000/svg" width="20"
+                    height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                 </svg>
             </td>
         </tr>
-  </tbody>
+    </tbody>
 
 </table>

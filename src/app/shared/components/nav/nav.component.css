@@ -1,0 +1,9 @@
+ul li a.nav-link {
+  display: flex;
+  align-items: center;
+  color: #fff !important;
+}
+
+ul li a.active {
+  background-color: rgb(112.520718, 44.062154, 249.437846);
+}
