@@ -11,6 +11,12 @@ export class AppComponent {
   left: string = '0px';
   contextMenuIsOpened: boolean = false;
 
+  ngOnInit() {
+    // this.jobGateway.jobs$.subscribe({
+    //   next: (data) => (this.jobs = data),
+    // });
+  }
+
   onRightClick(ev: any) {
     console.log('onRightClick');
     console.log(ev);

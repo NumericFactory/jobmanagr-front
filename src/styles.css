@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
 .btn-toggle {
   padding: 0.25rem 0.5rem;
@@ -7,6 +8,7 @@
   color: var(--bs-emphasis-color);
   background-color: transparent;
 }
+
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(var(--bs-emphasis-color-rgb), 0.85);
@@ -28,6 +30,7 @@
 .btn-toggle[aria-expanded="true"] {
   color: rgba(var(--bs-emphasis-color-rgb), 0.85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -37,6 +40,7 @@
   margin-top: 0.125rem;
   margin-left: 1.25rem;
 }
+
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
@@ -56,6 +60,7 @@ html,
 body {
   overflow: hidden;
 }
+
 .edit-link {
   font-size: 85%;
   color: #712cf9 !important;
@@ -65,15 +70,18 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.dialog-class .mat-mdc-dialog-surface {
+
+/* .dialog-class .mat-mdc-dialog-surface {
   padding: 30px;
   overflow: hidden;
   background: #fff;
 }
+
 .dialog-class mat-dialog-container {
   overflow: hidden;
 }
@@ -87,16 +95,16 @@ body {
   font-size: inherit !important;
   font-weight: inherit !important;
   letter-spacing: inherit !important;
-}
+} */
 
 .backdrop-class {
   background-color: #363042a5;
 }
 
-.form-floating > .form-control-plaintext ~ label,
-.form-floating > .form-control:focus ~ label,
-.form-floating > .form-control:not(:placeholder-shown) ~ label,
-.form-floating > .form-select ~ label {
+.form-floating>.form-control-plaintext~label,
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
   color: #242424;
   transform: scale(0.85) translateY(-0.5rem) translateX(1rem);
   font-weight: bold;

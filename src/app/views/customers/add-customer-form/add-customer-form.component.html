@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>Ajouter un client</h2>
+<form (submit)="submitCustomerForm()" [formGroup]="customerForm">
+    <mat-dialog-content>
+        <div class="row">
+
+            <!-- name -->
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="name" type="text" class="form-control">
+                <label>Nom</label>
+            </div>
+
+            <!-- type -->
+            <div class="mb-3 col-6 form-floating">
+                <select formControlName="type" type="text" class="form-control">
+                    <option value="ecole">École</option>
+                    <option value="entreprise">Entreprise</option>
+                    <option value="organisme public">Organisme public</option>
+                    <option value="association">Association</option>
+                    <option value="particulier">Particulier</option>
+                </select>
+                <label>Type</label>
+            </div>
+
+            <!-- siren -->
+            <div class="mb-3 col-12 form-floating">
+                <input type="text" class="form-control" formControlName="siret">
+                <label>SIRET</label>
+            </div>
+        </div>
+
+        <!-- address -->
+
+        <div formGroupName="address">
+            <fieldset>
+                <legend>Adresse</legend>
+                <div class="row">
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="address" type="text" class="form-control">
+                        <label>Adresse*</label>
+                    </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="complementaddress" type="text" class="form-control">
+                        <label>Complément adresse</label>
+                    </div>
+
+                    <div class="col-6 form-floating mb-3">
+                        <input formControlName="cp" type="text" class="form-control">
+                        <label>Code postal*</label>
+                    </div>
+                    <div class="col-6 form-floating mb-3">
+                        <input formControlName="city" type="text" class="form-control">
+                        <label>Ville*</label>
+                    </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="country" type="text" class="form-control">
+                        <label>Pays*</label>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </div>
+
+        <!-- isorganismeformation -->
+        <div class="row">
+            <div class="mb-3 col-6">
+                <input formControlName="isorganismeformation" class="form-check-input me-2" type="checkbox" value="0"
+                    id="isorganismeformation">
+                <label class="form-check-label" for="remote">Organisme de formation ?</label>
+            </div>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Fermer</button>
+        <button type="submit" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sauvegarder</button>
+    </mat-dialog-actions>
+</form>

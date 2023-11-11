@@ -2,18 +2,18 @@
 
   <!-- NAV -->
   <app-nav></app-nav>
-    
+
   <!-- CONTENT-->
   <div class="content" role="main">
-      <h1>Commencez à trouver des profils 👽</h1>
+    <h1 style="color:#999999">Commencez à trouver des profils 👽</h1>
 
-      <div class="d-flex" style="padding-top: 20px; padding-bottom:50px">
-        <app-jobs-list style="width:100%; margin-right:50px"></app-jobs-list>
-        <app-talents-list style="min-width:350px; max-width:550px"></app-talents-list>
-      </div>
+    <div class="d-flex" style="padding-top: 20px; padding-bottom:50px">
+      <app-jobs-list style="width:100%; margin-right:50px"></app-jobs-list>
+      <app-talents-list style="min-width:350px; max-width:550px"></app-talents-list>
+    </div>
   </div>
 
 
 </div>
-<app-contextmenu *ngIf="contextMenuIsOpened"  (contextMenuIsOpenedEvent)="openOrCloseContextMenu($event)" [top]="top" [left]="left"></app-contextmenu>
-
+<app-contextmenu *ngIf="contextMenuIsOpened" (contextMenuIsOpenedEvent)="openOrCloseContextMenu($event)" [top]="top"
+  [left]="left"></app-contextmenu>

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalDialogAddJobFormComponent } from './modal-dialog-add-job-form.component';
+import { ModalDialogAddJobFormComponent } from './add-job-form.component';
 import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 import { JobService } from 'src/app/core/adapters/job.service';
 import { FormBuilder } from '@angular/forms';

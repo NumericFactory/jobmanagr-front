@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerModel } from 'src/app/core/models/customer.model';
 import { JobModel } from 'src/app/core/models/job.model';
 import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 
@@ -11,7 +12,7 @@ export class JobsListComponent {
   jobs: JobModel[] = [];
   jobSelected!: JobModel;
 
-  constructor(private jobGateway: JobGateway) {}
+  constructor(private jobGateway: JobGateway) { }
 
   ngOnInit() {
     // request
@@ -22,15 +23,23 @@ export class JobsListComponent {
     });
   }
 
+  deleteJob(jobId: number, event: MouseEvent) {
+    event.stopPropagation();
+    if (confirm('Etes-vous sûr de vouloir supprimer ce job ?')) {
+      this.jobGateway.deleteJob(jobId);
+    }
+  }
+
   selectJob(job: JobModel) {
     if (this.jobSelected == job) {
       this.jobSelected = {
+        id: 0,
         title: '',
         duration: 0,
         tjmin: 0,
         tjmax: 0,
         customer_id: 0,
-        customer: { name: '', contacts: [] },
+        customer: new CustomerModel({}),
         specialities: [],
         status: 0,
       };

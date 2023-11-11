@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Ajouter un Talent</h2>
+<form (submit)="submitTalentForm()" [formGroup]="talentForm">
+    <mat-dialog-content>
+
+        <div class="row">
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="last" type="text" class="form-control">
+                <label>Nom</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="first" type="text" class="form-control">
+                <label>Prénom</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="xp" type="text" class="form-control">
+                <label>Années d'expérience</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="tjm" type="text" class="form-control">
+                <label>TJM</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="city" type="text" class="form-control">
+                <label>Ville</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="country" type="text" class="form-control">
+                <label>Pays</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="indicatifphone" type="text" class="form-control">
+                <label>indicatif</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="phone" type="text" class="form-control">
+                <label>Telephone</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="email" type="text" class="form-control">
+                <label>Email</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="linkedin" type="text" class="form-control">
+                <label>Linkedin</label>
+            </div>
+
+            <div class="mb-3 col-6">
+                <input formControlName="remote" class="form-check-input me-2" type="checkbox" value="0" id="remote">
+                <label class="form-check-label" for="remote">Remote</label>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Fermer</button>
+        <button type="submit" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sauvegarder</button>
+    </mat-dialog-actions>
+</form>

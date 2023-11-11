@@ -1,8 +1,9 @@
 .interface {
   display: flex;
 }
+
 .content {
   width: 100%;
   padding: 8px 30px 30px 30px;
-  background: #f1f2fa;
+  background: #eef1f2;
 }

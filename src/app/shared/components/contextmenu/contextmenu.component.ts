@@ -6,13 +6,15 @@ import {
   Inject,
   EventEmitter,
 } from '@angular/core';
-import { ModalDialogAddJobFormComponent } from 'src/app/views/jobs/modal-dialog-add-job-form/modal-dialog-add-job-form.component';
+import { ModalDialogAddJobFormComponent } from 'src/app/views/jobs/add-job-form/add-job-form.component';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogModule,
 } from '@angular/material/dialog';
+import { AddTalentFormComponent } from 'src/app/views/talents/add-talent-form/add-talent-form.component';
+import { AddCustomerFormComponent } from 'src/app/views/customers/add-customer-form/add-customer-form.component';
 
 @Component({
   selector: 'app-contextmenu',
@@ -31,7 +33,7 @@ export class ContextmenuComponent {
   animal: string = '';
   name: string = '';
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes['top']);
@@ -45,17 +47,35 @@ export class ContextmenuComponent {
     ev.preventDefault();
     console.log(this.contextMenuIsOpenedEvent);
     this.contextMenuIsOpenedEvent.emit(false);
-    console.log('open');
     const dialogRef = this.dialog.open(ModalDialogAddJobFormComponent, {
-      data: { name: this.name, animal: this.animal },
-      width: '1200px',
-      height: '550px',
-      panelClass: 'dialog-class', // Add a custom panel class,
-      backdropClass: 'backdrop-class',
+      width: '750px'
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
+    });
+  }
+
+  openDialogCreateNewCustomer(ev: Event): void {
+    ev.preventDefault();
+    console.log(this.contextMenuIsOpenedEvent);
+    this.contextMenuIsOpenedEvent.emit(false);
+    const dialogRef = this.dialog.open(AddCustomerFormComponent, {
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openDialogCreateNewTalent(ev: Event): void {
+    ev.preventDefault();
+    console.log(this.contextMenuIsOpenedEvent);
+    this.contextMenuIsOpenedEvent.emit(false);
+    const dialogRef = this.dialog.open(AddTalentFormComponent, {
+      width: '750px'
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
     });
   }
 }

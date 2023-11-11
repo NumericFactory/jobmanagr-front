@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Ajouter un Job</h2>
+<form (submit)="submitJobForm()" [formGroup]="jobForm">
+    <mat-dialog-content>
+
+        <div class="row">
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="title" type="text" class="form-control">
+                <label>Titre mission</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <select formControlName="customer_id" type="text" class="form-control">
+                    <option value="1">Epita</option>
+                </select>
+                <label>Client</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="duration" type="text" class="form-control">
+                <label>Durée (j)</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="startDate" type="date" class="form-control">
+                <label>Date début</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="tjmin" type="text" class="form-control">
+                <label>TJM min</label>
+            </div>
+
+            <div class="mb-3 col-6 form-floating">
+                <input formControlName="tjmax" type="text" class="form-control">
+                <label>TJM max</label>
+            </div>
+
+            <div class="mb-3 form-floating">
+                <textarea formControlName="info" rows="7" class="form-control"></textarea>
+                <label>Info</label>
+            </div>
+            <div class="mb-3 col-6">
+                <input formControlName="isRemote" class="form-check-input me-2" type="checkbox" value="0" id="remote">
+                <label class="form-check-label" for="remote">Remote</label>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Fermer</button>
+        <button type="submit" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sauvegarder</button>
+    </mat-dialog-actions>
+</form>

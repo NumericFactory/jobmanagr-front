@@ -31,16 +31,21 @@ export class JobService implements JobGateway {
 
   addNewJob(job: JobModel): void {
     let jobs = this._jobs$$.getValue();
-    let newjobs = [...jobs, job];
-    this._jobs$$.next(newjobs);
     this.http
       .post(this.apiURL + '/jobs', job)
-      .subscribe((data) => console.log(data));
+      .subscribe((response: any) => {
+        jobs = [...jobs, response.data];
+        this._jobs$$.next(jobs)
+      });
   }
 
   deleteJob(jobId: number): void {
+    let jobs = this._jobs$$.getValue();
     this.http
       .delete(this.apiURL + '/jobs/' + jobId)
-      .subscribe((data) => console.log(data));
+      .subscribe((response: any) => {
+        jobs = jobs.filter((job) => job.id !== jobId);
+        this._jobs$$.next(jobs);
+      });
   }
 }

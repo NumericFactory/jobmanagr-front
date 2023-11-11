@@ -33,13 +33,20 @@ export class CustomerService implements CustomerGateway {
     this._customers$$.next(newcustomers);
     this.http
       .post(this.apiURL + '/customers', customer)
-      .subscribe((data) => console.log(data));
+      .subscribe((response: any) => {
+        customers = [...customers, response.data];
+        this._customers$$.next(customers)
+      });
   }
 
   deleteCustomer(customerId: number): void {
     this.http
       .delete(this.apiURL + '/customers/' + customerId)
-      .subscribe((data) => console.log(data));
+      .subscribe((response) => {
+        let customers = this._customers$$.getValue();
+        let newcustomers = customers.filter((customer: CustomerModel) => customer.id !== customerId);
+        this._customers$$.next(newcustomers);
+      });
   }
 
 
