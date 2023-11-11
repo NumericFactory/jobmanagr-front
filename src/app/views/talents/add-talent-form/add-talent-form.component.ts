@@ -16,13 +16,20 @@ export class AddTalentFormComponent {
       first: [''],
       xp: [''],
       tjm: [''],
+      address: [''],
+      complementaddress: [''],
+      cp: [''],
       city: [''],
       country: [''],
       remote: [''],
       linkedin: [''],
       indicatifphone: [''],
       phone: [''],
-      email: ['']
+      email: [''],
+      siren: [''],
+      nic: [''],
+      siret: [''],
+      nda: [''],
     })
   }
 

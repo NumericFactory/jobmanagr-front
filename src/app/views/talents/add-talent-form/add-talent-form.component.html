@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Ajouter un Talent</h2>
+<h2 mat-dialog-title>Ajouter un Talent tech / Formateur.trice</h2>
 <form (submit)="submitTalentForm()" [formGroup]="talentForm">
     <mat-dialog-content>
 
@@ -25,39 +25,81 @@
             </div>
 
             <div class="mb-3 col-6 form-floating">
-                <input formControlName="city" type="text" class="form-control">
-                <label>Ville</label>
+                <input formControlName="siret" type="text" class="form-control">
+                <label>Siret</label>
             </div>
 
             <div class="mb-3 col-6 form-floating">
-                <input formControlName="country" type="text" class="form-control">
-                <label>Pays</label>
+                <input formControlName="nda" type="text" class="form-control">
+                <label>NDA</label>
             </div>
+        </div>
 
-            <div class="mb-3 col-6 form-floating">
-                <input formControlName="indicatifphone" type="text" class="form-control">
-                <label>indicatif</label>
-            </div>
+        <div class="address">
+            <fieldset>
+                <legend>Adresse</legend>
+                <div class="row">
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="address" type="text" class="form-control">
+                        <label>Adresse</label>
+                    </div>
 
-            <div class="mb-3 col-6 form-floating">
-                <input formControlName="phone" type="text" class="form-control">
-                <label>Telephone</label>
-            </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="complementaddress" type="text" class="form-control">
+                        <label>Complément d'adresse</label>
+                    </div>
 
-            <div class="mb-3 col-6 form-floating">
-                <input formControlName="email" type="text" class="form-control">
-                <label>Email</label>
-            </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="cp" type="text" class="form-control">
+                        <label>Code postal</label>
+                    </div>
 
-            <div class="mb-3 col-6 form-floating">
-                <input formControlName="linkedin" type="text" class="form-control">
-                <label>Linkedin</label>
-            </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="city" type="text" class="form-control">
+                        <label>Ville</label>
+                    </div>
 
-            <div class="mb-3 col-6">
-                <input formControlName="remote" class="form-check-input me-2" type="checkbox" value="0" id="remote">
-                <label class="form-check-label" for="remote">Remote</label>
-            </div>
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="country" type="text" class="form-control">
+                        <label>Pays</label>
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- INFOS CONTACT-->
+        <div class="address">
+            <fieldset>
+                <legend>Infos contact</legend>
+                <div class="row">
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="indicatifphone" type="text" class="form-control">
+                        <label>indicatif tel</label>
+                    </div>
+
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="phone" type="text" class="form-control">
+                        <label>Telephone</label>
+                    </div>
+
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="email" type="text" class="form-control">
+                        <label>Email</label>
+                    </div>
+
+                    <div class="mb-3 col-6 form-floating">
+                        <input formControlName="linkedin" type="text" class="form-control">
+                        <label>Linkedin</label>
+                    </div>
+
+                    <div class="mb-3 col-6">
+                        <input formControlName="remote" class="form-check-input me-2" type="checkbox" value="0"
+                            id="remote">
+                        <label class="form-check-label" for="remote">Remote</label>
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </mat-dialog-content>
 
