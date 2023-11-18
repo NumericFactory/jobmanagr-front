@@ -1,0 +1,26 @@
+<div class="list-input-countries" style="z-index: 99;">
+    <!-- input -->
+    <div style="position: relative;" (click)="isListCountriesVisible=true" (click)="openList()"
+        *ngIf="!isListCountriesVisible">
+        <div class="d-flex justify-content-between align-items-center content-visible">
+            <span>
+                <img [src]="selectedCountry.image">
+            </span>
+            <small>{{selectedCountry.phone[0]}}</small>
+        </div>
+    </div>
+    <input [class.d-none]="!isListCountriesVisible" (keyup)="searchCountryCodePhone(search.value)" #search type="text"
+        class="form-control search">
+    <!-- list -->
+    <ul *ngIf="isListCountriesVisible && countries.length>0" class="list-group" id="datalistOptions">
+        <li (click)="selectCountryCodePhone(country)" class="list-group-item" *ngFor="let country of countries">
+            <div class="d-flex justify-content-between">
+                <span>
+                    <img [src]="country.image" [alt]="country.name">
+                    <small>{{country.name}}</small>
+                </span>
+                <span><b>{{country.phone[0]}}</b></span>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -40,7 +40,7 @@ export class JobsListComponent {
         tjmax: 0,
         customer_id: 0,
         customer: new CustomerModel({}),
-        specialities: [],
+        skills: [],
         status: 0,
       };
       this.jobGateway.getJob(this.jobSelected);

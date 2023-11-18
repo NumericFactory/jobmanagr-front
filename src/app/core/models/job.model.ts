@@ -1,5 +1,5 @@
 import { CustomerModel } from './customer.model';
-import { SpecialityModel } from './speciality.model';
+import { SkillModel } from './skill.model';
 
 export class JobModel {
   id: number;
@@ -12,7 +12,7 @@ export class JobModel {
   tjmax: number;
   customer_id: number;
   customer?: CustomerModel;
-  specialities?: SpecialityModel[];
+  skills?: SkillModel[];
   info?: string;
   status?: number;
 
@@ -27,7 +27,7 @@ export class JobModel {
     this.tjmax = data.remote;
     this.customer_id = data.customer_id | 0;
     this.customer = new CustomerModel(data.customer);
-    this.specialities = data.phone;
+    this.skills = data.phone;
     this.info = data.info;
     this.status = data.status;
   }

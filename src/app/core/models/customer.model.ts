@@ -1,4 +1,4 @@
-interface Contact {
+interface IContact {
   last: string;
   first: string;
   email?: string;
@@ -7,7 +7,7 @@ interface Contact {
   linkedin?: string;
 }
 
-interface Address {
+interface IAddress {
   address: string;
   complementaddress: string;
   cp: string;
@@ -23,8 +23,8 @@ export class CustomerModel {
   siren: string;
   nic: string;
   siret: string;
-  address: Address;
-  contacts?: Contact[];
+  address: IAddress;
+  contacts?: IContact[];
   constructor(data: any) {
     this.id = data.id;
     this.name = data.name;

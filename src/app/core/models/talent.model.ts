@@ -1,7 +1,6 @@
-import { SpecialityModel } from './speciality.model';
+import { SkillModel } from './skill.model';
 
-
-interface Address {
+interface IAddress {
   address: string;
   complementaddress: string;
   cp: string;
@@ -9,6 +8,29 @@ interface Address {
   country: string;
 }
 
+class ResumeModel {
+  link: string;
+  created_at: string;
+  constructor(data: any) {
+    this.link = data.link;
+    this.created_at = data.created_at;
+  }
+}
+
+export class AddressModel implements IAddress {
+  address: string;
+  complementaddress: string;
+  cp: string;
+  city: string;
+  country: string;
+  constructor(data: any) {
+    this.address = data.address;
+    this.complementaddress = data.complementaddress;
+    this.cp = data.cp;
+    this.city = data.city;
+    this.country = data.country;
+  }
+}
 
 export class TalentModel {
   id: number;
@@ -16,11 +38,7 @@ export class TalentModel {
   first: string;
   xp: number;
   tjm: number;
-  address: string;
-  complementaddress: string;
-  cp: string;
-  city: string;
-  country: string;
+  address: AddressModel;
   remote: true;
   linkedin: string;
   phone: string;
@@ -29,8 +47,8 @@ export class TalentModel {
   nic: string;
   siret: string;
   nda: string;
-
-  specialities: SpecialityModel[];
+  skills: SkillModel[];
+  resumes: ResumeModel[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -38,11 +56,7 @@ export class TalentModel {
     this.first = data.first;
     this.xp = data.xp;
     this.tjm = data.tjm;
-    this.address = data.address;
-    this.complementaddress = data.complementaddress;
-    this.cp = data.cp;
-    this.city = data.city;
-    this.country = data.country;
+    this.address = new AddressModel(data);
     this.remote = data.remote;
     this.linkedin = data.linkedin;
     this.phone = data.phone;
@@ -51,7 +65,12 @@ export class TalentModel {
     this.nic = data.nic;
     this.siret = data.siret;
     this.nda = data.nda;
-    this.specialities = data.specialities;
+    this.skills = data.skills
+      ? data.skills.map((skill: any) => new SkillModel(skill))
+      : [];
+    this.resumes = data.resumes
+      ? data.resumes.map((resume: any) => new ResumeModel(resume))
+      : [];
   }
 
 }

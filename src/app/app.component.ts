@@ -18,8 +18,7 @@ export class AppComponent {
   }
 
   onRightClick(ev: any) {
-    console.log('onRightClick');
-    console.log(ev);
+
     this.top = ev.clientY;
     this.left = ev.clientX;
     this.contextMenuIsOpened = true;

@@ -1,0 +1,57 @@
+.list-input-countries input {
+    position: relative;
+    border-radius: 0 !important;
+    max-width: 100px;
+}
+
+.list-input-countries input.search {
+    height: 58px;
+    opacity: 1;
+}
+
+.list-input-countries input.search:focus {
+    z-index: 999;
+}
+
+.list-input-countries ul {
+    position: absolute;
+    top: 59px;
+    z-index: 999;
+    width: 365px;
+    height: 190px;
+    overflow: auto;
+}
+
+.list-input-countries ul li {
+    background: #f7f8fc;
+}
+
+.list-input-countries ul li:hover {
+    cursor: pointer;
+    background: #e9e9e9;
+}
+
+.list-input-countries img {
+    width: 20px;
+    margin-right: 5px
+}
+
+.d-none {
+    display: none;
+}
+
+.op-0 {
+    opacity: 0;
+}
+
+div.content-visible {
+    height: 58px;
+    width: 100px;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+}
+
+div.content-visible:hover {
+    cursor: pointer;
+    background: #e9e9e9;
+}

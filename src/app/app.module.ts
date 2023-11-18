@@ -4,6 +4,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
@@ -24,6 +27,12 @@ import { AddTalentFormComponent } from './views/talents/add-talent-form/add-tale
 import { AddCustomerFormComponent } from './views/customers/add-customer-form/add-customer-form.component';
 import { CustomerGateway } from './core/ports/customers.gateway';
 import { CustomerService } from './core/adapters/customer.service';
+import { InputFormTelComponent } from './shared/components/input-form-tel/input-form-tel.component';
+import { SearchTalentComponent } from './shared/components/search-talent/search-talent.component';
+import { SkillGateway } from './core/ports/skills.gateway';
+import { SkillService } from './core/adapters/skill.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { UpdateTalentFormComponent } from './views/talents/update-talent-form/update-talent-form.component';
 
 @NgModule({
 
@@ -36,10 +45,13 @@ import { CustomerService } from './core/adapters/customer.service';
     // views talents
     TalentsListComponent,
     AddTalentFormComponent,
+    UpdateTalentFormComponent,
     // views customers
     AddCustomerFormComponent,
     ContextmenuComponent,
     MailtoComponent,
+    InputFormTelComponent,
+    SearchTalentComponent
   ],
 
   imports: [
@@ -48,11 +60,16 @@ import { CustomerService } from './core/adapters/customer.service';
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [
     { provide: JobGateway, useClass: JobService },
     { provide: TalentGateway, useClass: TalentService },
+    { provide: SkillGateway, useClass: SkillService },
     { provide: CustomerGateway, useClass: CustomerService },
   ],
   bootstrap: [AppComponent],

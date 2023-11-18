@@ -1,9 +1,10 @@
 ul li a.nav-link {
   display: flex;
   align-items: center;
-  color: #fff !important;
+  color: #a4acb3 !important;
 }
 
 ul li a.active {
-  background-color: rgb(112.520718, 44.062154, 249.437846);
+  background-color: rgb(44 59 249);
+  color: aliceblue !important;
 }

@@ -3,6 +3,8 @@ import { TalentModel } from 'src/app/core/models/talent.model';
 import { JobModel } from 'src/app/core/models/job.model';
 import { TalentGateway } from 'src/app/core/ports/talents.gateway';
 import { JobGateway } from 'src/app/core/ports/jobs.gateway';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateTalentFormComponent } from '../update-talent-form/update-talent-form.component';
 
 @Component({
   selector: 'app-talents-list',
@@ -16,7 +18,8 @@ export class TalentsListComponent implements OnInit {
   constructor(
     private talentGateway: TalentGateway,
     private jobGateway: JobGateway,
-  ) {}
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     // request
@@ -37,7 +40,7 @@ export class TalentsListComponent implements OnInit {
     return `https://wa.me/${phone}?text=${sentence}`;
   }
 
-  getText(talent: TalentModel, job: JobModel) {}
+  getText(talent: TalentModel, job: JobModel) { }
 
   /**
    * compute Margin
@@ -72,5 +75,19 @@ export class TalentsListComponent implements OnInit {
     } else {
       return 0;
     }
+  }
+
+  openDetailView(ev: Event, talent: TalentModel) {
+    ev.preventDefault();
+    const dialogRef = this.dialog.open(UpdateTalentFormComponent, {
+      width: '65rem',
+      maxWidth: '50vw;',
+      data: talent,
+      position: { top: '20px' },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      //console.log('The dialog was closed');
+    });
+
   }
 }

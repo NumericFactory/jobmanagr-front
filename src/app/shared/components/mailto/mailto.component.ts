@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { JobModel } from 'src/app/core/models/job.model';
+import { TalentModel } from 'src/app/core/models/talent.model';
 
 @Component({
   selector: 'app-mailto',
@@ -7,7 +8,7 @@ import { JobModel } from 'src/app/core/models/job.model';
   styleUrls: ['./mailto.component.css'],
 })
 export class MailtoComponent {
-  @Input() to!: string;
+  @Input() to!: TalentModel;
   @Input() subject!: string;
   @Input() content!: JobModel;
 
@@ -16,14 +17,23 @@ export class MailtoComponent {
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes['content'].currentValue);
     let mission = changes['content'].currentValue;
-    this.formattedContent = `Hello :) %0A
-Nous recherchons un.e formateur.trice ${mission.title}%0A%0A
-Details :  %0A
-- Durée : ${mission.durationInDays} jours %0A
-- Modalités : Distanciel %0A
-- Lieu : Paris %0A
+    let formattedContent = `Hello ${this.to.first} :)
+Je recherche un.e formateur.trice / mission de ${mission.title}
+Mission 100% distanciel
+
+Details :  
+👉 Durée ${mission.duration} jours 
+👉 Public 10 apprenants en reconversion professionnelle (niveau intermédiaire)
+👉 Début de mission  ${mission.startDate}
+👉 Horaires 9h00 - 17h15
+👉 Paris
+
+Si intéressé.e, je suis disponible pour en parler de vive voix. Qu'en pensez-vous ?
+Frederic Lossignol / Airskill
+☎️ 06 88 36 22 55
 
 `;
+    this.formattedContent = encodeURI(formattedContent);
   }
-  ngOnInit() {}
+  ngOnInit() { }
 }

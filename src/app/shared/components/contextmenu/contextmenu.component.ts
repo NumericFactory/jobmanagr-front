@@ -36,46 +36,44 @@ export class ContextmenuComponent {
   constructor(public dialog: MatDialog) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['top']);
     this.theTop = changes['top'].currentValue.toString() + 'px';
     this.theLeft = changes['left'].currentValue.toString() + 'px';
-    console.log(this.theTop);
-    console.log(this.theLeft);
   }
 
   openDialogCreateNewJob(ev: Event): void {
     ev.preventDefault();
-    console.log(this.contextMenuIsOpenedEvent);
     this.contextMenuIsOpenedEvent.emit(false);
     const dialogRef = this.dialog.open(ModalDialogAddJobFormComponent, {
-      width: '750px'
+      width: '750px',
+      maxWidth: '85rem;',
+      position: { top: '50px' },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
     });
   }
 
   openDialogCreateNewCustomer(ev: Event): void {
     ev.preventDefault();
-    console.log(this.contextMenuIsOpenedEvent);
     this.contextMenuIsOpenedEvent.emit(false);
     const dialogRef = this.dialog.open(AddCustomerFormComponent, {
-      width: '750px'
+      width: '750px',
+      position: { top: '50px' },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
     });
   }
 
   openDialogCreateNewTalent(ev: Event): void {
     ev.preventDefault();
-    console.log(this.contextMenuIsOpenedEvent);
     this.contextMenuIsOpenedEvent.emit(false);
     const dialogRef = this.dialog.open(AddTalentFormComponent, {
-      width: '750px'
+      width: '750px',
+      position: { top: '50px' },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
     });
   }
 }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TalentModel } from 'src/app/core/models/talent.model';
+import { TalentGateway } from 'src/app/core/ports/talents.gateway';
+import { CountrycodephoneService } from 'src/app/shared/services/countrycodephone.service';
 
 @Component({
   selector: 'app-add-talent-form',
@@ -10,7 +13,10 @@ export class AddTalentFormComponent {
 
   talentForm!: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private countrycodephoneSvc: CountrycodephoneService,
+    private talentGateway: TalentGateway) {
     this.talentForm = this.fb.group({
       last: [''],
       first: [''],
@@ -33,13 +39,21 @@ export class AddTalentFormComponent {
     })
   }
 
+  searchCountryCodePhone(inputText: string) {
+    this.countrycodephoneSvc.getCountryCodePhoneByTextInput(inputText);
+  }
+
+  selectCountryCode(event: Event) {
+    this.talentForm.controls['indicatifphone'].setValue(event);
+  }
+
   submitTalentForm() {
     console.log(this.talentForm.value);
-    // let siret = this.customerForm.value.siret;
-    // this.customerForm.value.siren = siret.substring(0, 9);
-    // this.customerForm.value.nic = siret.substring(9, 5);
-    // let customer: CustomerModel = new CustomerModel(this.customerForm.value);
-    // this.customerGateway.addNewCustomer(customer);
+    let siret = this.talentForm.value.siret;
+    this.talentForm.value.siren = siret.substring(0, 9);
+    this.talentForm.value.nic = siret.substring(9, 5);
+    let talent: TalentModel = new TalentModel(this.talentForm.value);
+    this.talentGateway.addNewTalent(talent);
   }
 
 }

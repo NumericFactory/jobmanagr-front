@@ -73,15 +73,20 @@
             <fieldset>
                 <legend>Infos contact</legend>
                 <div class="row">
-                    <div class="mb-3 col-6 form-floating">
-                        <input formControlName="indicatifphone" type="text" class="form-control">
-                        <label>indicatif tel</label>
+
+                    <div class="input-group mb-3 col-6 form-floating">
+                        <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                        <app-input-form-tel (countrySelectedEvent)="selectCountryCode($event)"></app-input-form-tel>
+                        <input formControlName="indicatifphone" type="hidden" class="form-control">
+                        <div class="form-floating">
+                            <input style="padding-top: 0.625rem;" formControlName="phone" type="text"
+                                class="form-control">
+                            <label
+                                style="transform:scale(0.85) translateY(-1.7rem) translateX(1.5rem)">Telephone</label>
+                        </div>
                     </div>
 
-                    <div class="mb-3 col-6 form-floating">
-                        <input formControlName="phone" type="text" class="form-control">
-                        <label>Telephone</label>
-                    </div>
+
 
                     <div class="mb-3 col-6 form-floating">
                         <input formControlName="email" type="text" class="form-control">
@@ -105,6 +110,6 @@
 
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Fermer</button>
-        <button type="submit" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sauvegarder</button>
+        <button type="submit" mat-button color="primary" cdkFocusInitial>Sauvegarder</button>
     </mat-dialog-actions>
 </form>

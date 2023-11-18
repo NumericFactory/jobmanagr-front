@@ -1,12 +1,15 @@
+<app-search-talent></app-search-talent>
+
 <div class="row talent-container">
     <div class="col-12" *ngFor="let talent of talents">
         <div class="card">
             <div class="card-body">
 
                 <div *ngIf="talent.tjm && talent.tjm>0 && selectedJob && selectedJob.tjmin>0"
-                    style="position:absolute; top:3px; right:12px"
+                    style="position:absolute; top:1px; right:12px"
                     class="animate__animated animate__fadeInDown animate__faster">
-                    <span style="background-color: #e0d1ff !important;border: 1px solid #b999ff;"
+                    <span
+                        style="background-color: #233a87 !important;border: 1px solid #5e92cc;color: #52d5ff !important;"
                         title="marge/mission  {{computeMarginMinPerDay(talent)}} à {{computeMarginMaxPerDay(talent)}} €/j"
                         class="badge rounded-pill text-bg-warning">
                         {{computeMarginMinPerJob(talent)}} / {{computeMarginMaxPerJob(talent)}} €HT
@@ -24,9 +27,10 @@
                 </div>
                 <div class="d-flex">
 
-                    <span *ngFor="let speciality of talent.specialities" class="me-2">
-                        <button class="btn btn-sm btn-outline-dark position-relative" style="--bs-btn-padding-y: .05rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem;background: rgb(29, 29, 29);
-                            color: #fff;border-radius: 4px;">
+                    <span *ngFor="let speciality of talent.skills" class="me-2">
+                        <button class="btn btn-sm btn-outline-dark position-relative"
+                            style="--bs-btn-padding-y: .05rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem;
+                            background: rgb(84 80 71 / 59%); color: #d8ba71; border:1px solid #4b473f;border-radius: 3px; font-size: 13px;">
                             {{speciality.title}}
                             <!-- <span class="badge text-bg-dark position-absolute top-0 start-100 translate-middle badge rounded-pill">
                             {{speciality.xp}}
@@ -60,7 +64,8 @@
                         </svg>
 
                         <!-- Email -->
-                        <app-mailto *ngIf="selectedJob" [to]="talent.email" [subject]="selectedJob.title"
+                        <app-mailto *ngIf="selectedJob" [to]="talent"
+                            [subject]="'Recherche formateur.e / ' + selectedJob.title"
                             [content]="selectedJob"></app-mailto>
                         <a *ngIf="!selectedJob" target="_blank"
                             href="mailto:{{talent.email}}?subject=Recherche Formateur.trice &body=Hello, ...">{{talent.email}}</a>
@@ -75,6 +80,24 @@
                             </svg>
                         </a>
                     </p>
+                    <p *ngIf="talent.resumes.length>0" class="card-text">
+                        <a target="_blank" href="{{talent.resumes[0].link}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pdf" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <button style="background-color: #233a87;color: aliceblue;" class="btn btn-sm btn-light">
+                    <i class="bi bi-filetype-pdf mr-1"></i>
+                    CV
+                </button>
+                <div>
+                    <button (click)="openDetailView($event, talent)" class="btn btn-sm btn-link mr-2">Editer</button>
                 </div>
             </div>
         </div>
