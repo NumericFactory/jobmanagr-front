@@ -1,0 +1,51 @@
+<!-- UPLOAD CV INPUT-->
+<div class="row my-3">
+    <fieldset>Ajouter un contrat</fieldset>
+    <div *ngIf="this.jobGateway.jobs$ | async as jobs" class="row">
+        <!-- <pre>{{jobs | json}}</pre> -->
+        <form action="">
+            <div class="col-6 mb-2">
+                <select class="form-control">
+                    <option value="">-- Associer une mission</option>
+                    <option *ngFor="let job of jobs" [value]="job.id">{{job.title}} - {{job.startDate}}</option>
+                </select>
+                <input type="text" class="form-control" placeholder="n° de contrat">
+            </div>
+            <div class="col-6 mb-2">
+                <div class="input-group">
+                    <input style="height: 38px;" #contractinput type="file" class="form-control">
+                    <button type="button" (click)="uploadContractAction($event, contractinput)" class="btn btn-primary">
+                        Ajouter<mat-icon>upload</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="cv py-3">
+    <div class="row">
+        <ul class="cv-list">
+            <li *ngFor="let contract of talent.contracts; let i=index">
+                <span class="float-end">
+                    <button mat-icon-button type="button" (click)="deleteContractAction(talent, contract.id)"
+                        class="btn btn-succcess">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </span>
+                <span>cv-{{talent.last | lowercase}}-{{talent.first | lowercase}}-{{i+1}}</span>
+                <span class="float-end">
+                    <button title="Voir" (click)="viewContractAction(talent, contract.id)" mat-icon-button type="button"
+                        class="btn btn-succcess">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button title="télécharger" (click)="downloadContractAction(talent, contract.id)" mat-icon-button
+                        type="button" class="btn btn-succcess">
+                        <mat-icon>download</mat-icon>
+                    </button>
+                </span>
+            </li>
+
+        </ul>
+    </div>

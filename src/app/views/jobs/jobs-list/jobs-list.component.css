@@ -14,3 +14,13 @@ tr.selected td {
 .status.active {
   color: #712cf9;
 }
+
+.step-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.step-list i {
+  margin-right: 5px;
+}

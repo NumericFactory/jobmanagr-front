@@ -1,4 +1,13 @@
-<h2 mat-dialog-title>Ajouter un Talent tech / Formateur.trice</h2>
+<h2 mat-dialog-title>
+    <span class="d-flex justify-content-between">
+        <span>Ajouter un Talent tech / Formateur.trice</span>
+    </span>
+</h2>
+<span style="position: absolute; top:0.5rem; right: 0.5rem;">
+    <button mat-icon-button mat-dialog-close class="close">
+        <mat-icon>close</mat-icon>
+    </button>
+</span>
 <form (submit)="submitTalentForm()" [formGroup]="talentForm">
     <mat-dialog-content>
 
@@ -109,7 +118,6 @@
     </mat-dialog-content>
 
     <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Fermer</button>
         <button type="submit" mat-button color="primary" cdkFocusInitial>Sauvegarder</button>
     </mat-dialog-actions>
 </form>

@@ -1,0 +1,123 @@
+fieldset {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #a9a6a6;
+}
+
+label button mat-icon,
+fieldset mat-icon,
+mat-icon {
+    color: #e0e0e0
+}
+
+.skills span.add-skill-btn {
+    display: inline-flex;
+    transform: translateY(7px);
+    background: #f3f6fc;
+    color: #b4b9c3;
+    transition-duration: .2s;
+}
+
+.skills span.add-skill-btn>mat-icon {
+    color: #777777;
+}
+
+.skills span.add-skill-btn:hover {
+    background: #f7f7f7;
+    color: #0050ef;
+    cursor: pointer;
+}
+
+.skills span.add-skill-btn:hover>mat-icon {
+    color: #0050ef;
+}
+
+.skills span {
+    margin-right: 5px;
+    display: inline-block;
+    background: #2e3271;
+    padding: 0px 3px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: aliceblue;
+}
+
+.skills span.pill {
+    display: flex;
+    align-items: center;
+}
+
+.skills span mat-icon.remove-skill {
+    opacity: .7;
+}
+
+.skills span mat-icon.remove-skill:hover {
+    opacity: 1;
+    color: #c9dbff;
+    text-shadow: 0 0 1px #ffffff;
+    cursor: pointer;
+}
+
+
+.skills span.add-skill {
+    background: none;
+    padding: 0;
+    height: 35px;
+}
+
+label {
+    margin-bottom: 0;
+    position: relative;
+    font-weight: 500;
+    color: #111;
+}
+
+label button {
+    position: absolute;
+    top: -15px;
+    color: rgb(188 193 200);
+}
+
+label button:active {
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.form-control {
+    transition-duration: .2s;
+}
+
+.form-control:disabled {
+    opacity: .55;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 0.375rem 0rem;
+    background: transparent;
+}
+
+.input-group-text,
+.submit-btn {
+    background-color: #12d794;
+    color: #fff;
+}
+
+.input-group-text:hover,
+.submit-btn:hover {
+    background-color: #02f5a4;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #cdcdcd
+}
+
+.bi-pen-fill {
+    font-size: 15px;
+    margin-left: 0px;
+}
+
+.danger-zone {
+    margin-top: 30px;
+    background: #dc35450f;
+    padding: 30px 20px;
+}

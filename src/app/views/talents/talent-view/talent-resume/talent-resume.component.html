@@ -1,0 +1,46 @@
+<!-- UPLOAD CV INPUT-->
+<div class="row my-3" [class.o-50]="talent.resumes.length>=TOTAL_RESUMES">
+    <div class="col-12 col-md-6">
+        <label *ngIf="talent.resumes.length<TOTAL_RESUMES" class="form-label">Ajouter un CV</label>
+        <label *ngIf="talent.resumes.length>=TOTAL_RESUMES" class="form-label">Supprimer 1 CV pour ajouter un
+            nouveau</label>
+        <div *ngIf="talent.resumes.length<TOTAL_RESUMES" class="input-group mb-2">
+            <input [disabled]="talent.resumes.length>=TOTAL_RESUMES" style="height: 38px;" #cvinput type="file"
+                class="form-control">
+            <button [disabled]="talent.resumes.length>=TOTAL_RESUMES" type="button"
+                (click)="uploadResumeAction($event, cvinput)" class="btn btn-succcess">
+                Ajouter <mat-icon>upload</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="cv py-3">
+    <div class="row">
+        <ul class="cv-list">
+            <li *ngFor="let resume of talent.resumes; let i=index">
+                <span class="float-end">
+                    <button mat-icon-button type="button" (click)="deleteResumeAction(talent, resume.id)"
+                        class="btn btn-succcess">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </span>
+                <span>cv-{{talent.last | lowercase}}-{{talent.first | lowercase}}-{{i+1}}</span>
+                <span class="float-end">
+                    <button title="Voir" (click)="viewResumeAction(talent, resume.id)" mat-icon-button type="button"
+                        class="btn btn-succcess">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button title="télécharger" (click)="downloadResumeAction(talent, resume.id)" mat-icon-button
+                        type="button" class="btn btn-succcess">
+                        <mat-icon>download</mat-icon>
+                    </button>
+                </span>
+            </li>
+
+        </ul>
+    </div>
+
+
+
+</div>

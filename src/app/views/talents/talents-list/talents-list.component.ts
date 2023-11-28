@@ -4,7 +4,7 @@ import { JobModel } from 'src/app/core/models/job.model';
 import { TalentGateway } from 'src/app/core/ports/talents.gateway';
 import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 import { MatDialog } from '@angular/material/dialog';
-import { UpdateTalentFormComponent } from '../update-talent-form/update-talent-form.component';
+import { TalentViewComponent } from '../talent-view/talent-view.component';
 
 @Component({
   selector: 'app-talents-list',
@@ -79,9 +79,10 @@ export class TalentsListComponent implements OnInit {
 
   openDetailView(ev: Event, talent: TalentModel) {
     ev.preventDefault();
-    const dialogRef = this.dialog.open(UpdateTalentFormComponent, {
+    const dialogRef = this.dialog.open(TalentViewComponent, {
       width: '65rem',
       maxWidth: '50vw;',
+      minHeight: '85vh',
       data: talent,
       position: { top: '20px' },
     });

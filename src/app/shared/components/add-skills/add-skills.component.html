@@ -1,0 +1,9 @@
+<form>
+    <input type="text" placeholder="+Ajouter ..." [formControl]="skillCtrl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option [disabled]="isSkillInExludedSkills(skill)" *ngFor="let skill of filteredSkills | async"
+            [value]="skill.title">
+            {{skill.title}}
+        </mat-option>
+    </mat-autocomplete>
+</form>

@@ -4,6 +4,10 @@ mat-dialog-content {
     margin-bottom: 10px;
 }
 
+mat-dialog-actions {
+    background-color: #fff5d9;
+}
+
 button.close mat-icon {
     color: #fff9;
 }
@@ -13,4 +17,15 @@ h2.mdc-dialog__title {
     font-size: 1.5rem !important;
     font-weight: 500 !important;
     color: rgb(232, 232, 232)
+}
+
+ul.nav-tabs {
+    padding-top: 10px !important;
+    position: sticky;
+    width: 100%;
+    margin-bottom: 0px;
+    top: 0;
+    background: #fff;
+    z-index: 99;
+    padding: 0 24px;
 }

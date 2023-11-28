@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { TalentModel } from 'src/app/core/models/talent.model';
 import { TalentGateway } from 'src/app/core/ports/talents.gateway';
 import { CountrycodephoneService } from 'src/app/shared/services/countrycodephone.service';
+import { TalentViewComponent } from '../talent-view/talent-view.component';
 
 @Component({
   selector: 'app-add-talent-form',
@@ -16,7 +18,8 @@ export class AddTalentFormComponent {
   constructor(
     private fb: FormBuilder,
     private countrycodephoneSvc: CountrycodephoneService,
-    private talentGateway: TalentGateway) {
+    private talentGateway: TalentGateway,
+    private dialogTalentViewRef: MatDialogRef<TalentViewComponent>,) {
     this.talentForm = this.fb.group({
       last: [''],
       first: [''],
@@ -54,6 +57,7 @@ export class AddTalentFormComponent {
     this.talentForm.value.nic = siret.substring(9, 5);
     let talent: TalentModel = new TalentModel(this.talentForm.value);
     this.talentGateway.addNewTalent(talent);
+    this.dialogTalentViewRef.close();
   }
 
 }

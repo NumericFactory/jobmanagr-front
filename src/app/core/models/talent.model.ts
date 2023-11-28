@@ -1,4 +1,5 @@
 import { SkillModel } from './skill.model';
+import { ContractModel } from './contract.model';
 
 interface IAddress {
   address: string;
@@ -8,10 +9,12 @@ interface IAddress {
   country: string;
 }
 
-class ResumeModel {
+export class ResumeModel {
+  id: number;
   link: string;
   created_at: string;
   constructor(data: any) {
+    this.id = data.id;
     this.link = data.link;
     this.created_at = data.created_at;
   }
@@ -41,6 +44,7 @@ export class TalentModel {
   address: AddressModel;
   remote: true;
   linkedin: string;
+  indicatifphone: string;
   phone: string;
   email: string;
   siren: string;
@@ -49,6 +53,7 @@ export class TalentModel {
   nda: string;
   skills: SkillModel[];
   resumes: ResumeModel[];
+  contracts: ContractModel[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -59,6 +64,7 @@ export class TalentModel {
     this.address = new AddressModel(data);
     this.remote = data.remote;
     this.linkedin = data.linkedin;
+    this.indicatifphone = data.indicatifphone;
     this.phone = data.phone;
     this.email = data.email;
     this.siren = data.siren;
@@ -70,6 +76,9 @@ export class TalentModel {
       : [];
     this.resumes = data.resumes
       ? data.resumes.map((resume: any) => new ResumeModel(resume))
+      : [];
+    this.contracts = data.contracts
+      ? data.contracts.map((contract: any) => new ContractModel(contract))
       : [];
   }
 

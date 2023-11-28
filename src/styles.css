@@ -156,3 +156,7 @@ body {
     font-size: 1.3rem !important;
   }
 }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #f3f6fc !important;
+}

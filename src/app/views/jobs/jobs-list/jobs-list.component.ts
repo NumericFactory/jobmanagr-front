@@ -16,7 +16,7 @@ export class JobsListComponent {
 
   ngOnInit() {
     // request
-    this.jobGateway.getJobs();
+    this.jobGateway.getJobs({ withCustomer: true });
 
     this.jobGateway.jobs$.subscribe({
       next: (data) => (this.jobs = data),

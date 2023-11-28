@@ -2,6 +2,9 @@ ul li a.nav-link {
   display: flex;
   align-items: center;
   color: #a4acb3 !important;
+  flex-direction: column;
+  font-size: 14px;
+  align-items: center;
 }
 
 ul li a.active {

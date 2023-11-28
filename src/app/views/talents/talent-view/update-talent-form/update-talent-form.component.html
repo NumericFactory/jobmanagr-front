@@ -1,0 +1,235 @@
+<form [formGroup]="talentForm">
+
+    <div class="row py-3">
+        <fieldset>Compétences</fieldset>
+
+        <!-- skills -->
+        <div class="mb-3 col-12">
+            <span class="skills">
+                <span *ngFor="let skill of talent.skills">
+                    <span class="pill">
+                        <span>{{skill.title}}</span>
+                        <mat-icon class="remove-skill" (click)="removeSkillAction(skill)">close</mat-icon>
+                    </span>
+                </span>
+                <!-- <span class="add-skill-btn"><mat-icon>add</mat-icon> ajouter</span> -->
+                <!-- add skills form -->
+                <span class="add-skill">
+                    <add-skills (selectedSkillEvent)="addSkillAction($event)" [allskills]="skills"
+                        [excludeskills]="talent.skills"></add-skills>
+                </span>
+            </span>
+        </div>
+
+        <!-- add skills form
+        <add-skills (selectedSkillEvent)="addSkill($event)" [allskills]="skills"></add-skills> -->
+
+        <!-- xp -->
+        <div class="mb-2 col-12 col-md-6">
+            <label class="form-label">Années d'expérience
+                <button mat-icon-button type="button" (click)="setEditableField('xp')">
+                    <mat-icon *ngIf="editableFieldName!='xp'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='xp'">cancel</mat-icon>
+                </button>
+            </label>
+            <div class="input-group mb-3">
+                <input formControlName="xp" type="text" class="form-control">
+                <span (click)="updateFieldAction('xp')" *ngIf="editableFieldName == 'xp'" class="input-group-text">
+                    <i class="bi bi-check"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- tjm -->
+        <div class="mb-2 col-12 col-md-6">
+            <label class="form-label">TJM
+                <button mat-icon-button type="button" (click)="setEditableField('tjm')">
+                    <mat-icon *ngIf="editableFieldName!='tjm'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='tjm'">cancel</mat-icon>
+                </button>
+            </label>
+            <div class="input-group mb-3">
+                <input formControlName="tjm" type="text" class="form-control">
+                <span (click)="updateFieldAction('tjm')" *ngIf="editableFieldName == 'tjm'" class="input-group-text">
+                    <i class="bi bi-check"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- INFOS ENTREPRISE -->
+        <fieldset>Entreprise</fieldset>
+
+        <!-- siret -->
+        <div class="mb-2 col-12 col-md-6">
+            <label class="form-label">Siret
+                <button mat-icon-button type="button" (click)="setEditableField('siret')">
+                    <mat-icon *ngIf="editableFieldName!='siret'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='siret'">cancel</mat-icon>
+                </button>
+            </label>
+            <div class="input-group mb-3">
+                <input type="text" formControlName="siret" type="text" class="form-control">
+                <span type="button" (click)="updateFieldAction('siret')" *ngIf="editableFieldName == 'siret'"
+                    class="input-group-text">
+                    <i class="bi bi-check"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- nda -->
+        <div class="mb-2 col-12 col-md-6">
+            <label class="form-label">NDA
+                <button mat-icon-button type="button" (click)="setEditableField('nda')">
+                    <mat-icon *ngIf="editableFieldName!='nda'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='nda'">cancel</mat-icon>
+                </button>
+            </label>
+            <div class="input-group mb-3">
+                <input type="text" formControlName="nda" type="text" class="form-control">
+                <span (click)="updateFieldAction('nda')" *ngIf="editableFieldName == 'nda'" class="input-group-text">
+                    <i class="bi bi-check"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFOS ADDRESS-->
+    <div formGroupName="address" class="row address py-3">
+        <fieldset class="d-flex align-items-center">
+            <span>Adresse</span>
+            <button mat-icon-button type="button" (click)="setEditableField('address')">
+                <mat-icon *ngIf="editableFieldName!='address'">edit</mat-icon>
+                <mat-icon *ngIf="editableFieldName=='address'">cancel</mat-icon>
+            </button>
+        </fieldset>
+        <div class="row">
+            <!-- address-->
+            <div class="col-12 col-md-6">
+                <label class="form-label">Adresse</label>
+                <div class="input-group mb-2">
+                    <input formControlName="address" type="text" class="form-control">
+                </div>
+            </div>
+            <!-- complementaddress -->
+            <div class="col-12 col-md-6">
+                <label class="form-label">Complément d'adresse</label>
+                <div class="input-group mb-2">
+                    <input formControlName="complementaddress" type="text" class="form-control">
+                </div>
+            </div>
+            <!-- cp -->
+            <div class="col-12 col-md-6">
+                <label class="form-label">Code postal</label>
+                <div class="input-group mb-2">
+                    <input formControlName="cp" type="text" class="form-control">
+                </div>
+            </div>
+            <!-- city -->
+            <div class="col-12 col-md-6">
+                <label class="form-label">Ville</label>
+                <div class="input-group mb-2">
+                    <input formControlName="city" type="text" class="form-control">
+                </div>
+            </div>
+            <!-- country -->
+            <div class="col-12 col-md-6 mb-3">
+                <label class="form-label">Pays</label>
+                <div class="input-group mb-2">
+                    <input formControlName="country" type="text" class="form-control">
+                </div>
+            </div>
+            <!-- save address button -->
+            <div style="position: relative;" class="col-12 col-md-6 mb-3">
+                <label class="form-label"></label>
+                <button *ngIf="this.talentForm.controls['address'].enabled" style="position: absolute;bottom: 10px;"
+                    type="button" (click)="updateFieldAction('address')" class="btn submit-btn">
+                    <i class="bi bi-check"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFOS CONTACT-->
+    <div class="row address py-3">
+        <fieldset class="d-flex align-items-center">
+            <span>Contact</span>
+        </fieldset>
+        <div class="row">
+
+            <!-- phone-->
+            <label style="display: block;" class="form-label">
+                Téléphone
+                <button mat-icon-button type="button" (click)="setEditableField('phone')">
+                    <mat-icon *ngIf="editableFieldName!='phone'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='phone'">cancel</mat-icon>
+                </button>
+            </label>
+            <div style="height: 50px;" class="mb-2 col-6 form-floating input-group">
+                <div style="padding:1.225rem .35rem" *ngIf="editableFieldName != 'phone'">
+                    {{talent.indicatifphone}}
+                </div>
+                <app-input-form-tel *ngIf="editableFieldName == 'phone'"
+                    (countrySelectedEvent)="selectCountryCode($event)"></app-input-form-tel>
+                <div class="form-floating input-group">
+                    <input style="padding-top: 0.625rem;" formControlName="phone" type="text" class="form-control">
+                    <span (click)="updateFieldAction('phone')" *ngIf="editableFieldName == 'phone'"
+                        class="input-group-text">
+                        <i class="bi bi-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- email-->
+            <div class="mb-2 col-12 col-md-6">
+                <label class="form-label">Email</label>
+                <button mat-icon-button type="button" (click)="setEditableField('email')">
+                    <mat-icon *ngIf="editableFieldName!='email'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='email'">cancel</mat-icon>
+                </button>
+                <div class="input-group mb-3">
+                    <input formControlName="email" type="text" class="form-control">
+                    <span (click)="updateFieldAction('email')" *ngIf="this.talentForm.controls['email'].enabled"
+                        class="input-group-text">
+                        <i class="bi bi-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- linkedin-->
+            <div class="mb-2 col-12 col-md-6">
+                <label class="form-label">Linkedin</label>
+                <button mat-icon-button type="button" (click)="setEditableField('linkedin')">
+                    <mat-icon *ngIf="editableFieldName!='linkedin'">edit</mat-icon>
+                    <mat-icon *ngIf="editableFieldName=='linkedin'">cancel</mat-icon>
+                </button>
+                <div class="input-group mb-3">
+                    <input formControlName="linkedin" type="text" class="form-control">
+                    <span (click)="updateFieldAction('linkedin')" *ngIf="this.talentForm.controls['linkedin'].enabled"
+                        class="input-group-text">
+                        <i class="bi bi-check"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- <div class="mb-3 col-6">
+                    <input formControlName="remote" class="form-check-input me-2" type="checkbox" value="0"
+                        id="remote">
+                    <label class="form-check-label" for="remote">Remote</label>
+            </div> -->
+
+        </div>
+
+    </div>
+</form>
+
+
+<div class="danger-zone">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="">Zone danger</h3>
+        </div>
+        <div class="col-12">
+            <button (click)="deleteTalentAction(talent)" class="btn btn-outline-danger">Supprimer le profil</button>
+        </div>
+    </div>
+</div>

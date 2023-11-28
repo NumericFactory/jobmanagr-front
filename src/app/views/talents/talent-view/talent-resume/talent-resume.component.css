@@ -1,0 +1,39 @@
+fieldset,
+label {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #a9a6a6;
+}
+
+ul.cv-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cv-list li {
+    padding: 0.2em 0.775em;
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    margin-bottom: 7px;
+    color: #111;
+}
+
+.cv-list li span:last-child {
+    margin-left: auto;
+}
+
+.cv-list li mat-icon {
+    color: gainsboro;
+}
+
+.input-group button {
+    margin-left: 10px;
+    height: 38px;
+    display: flex;
+}
+
+.o-50 {
+    opacity: 0.5;
+}

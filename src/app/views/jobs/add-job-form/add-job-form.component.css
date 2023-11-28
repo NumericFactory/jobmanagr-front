@@ -1,0 +1,16 @@
+mat-dialog-content {
+    padding-top: 0px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button.close mat-icon {
+    color: #fff9;
+}
+
+h2.mdc-dialog__title {
+    line-height: 28px !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    color: rgb(232, 232, 232)
+}

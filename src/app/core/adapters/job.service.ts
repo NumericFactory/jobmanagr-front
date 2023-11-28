@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { JobModel } from 'src/app/core/models/job.model';
-import { JobGateway } from 'src/app/core/ports/jobs.gateway';
+import { IparamsGetJobs, JobGateway } from 'src/app/core/ports/jobs.gateway';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,12 @@ export class JobService implements JobGateway {
 
   constructor(private http: HttpClient) { }
 
-  getJobs(): void {
+  getJobs(options: IparamsGetJobs): void {
+    let params = new HttpParams();
+    if (options.withCustomer) params = params.append('withcustomer', options.withCustomer);
+
     this.http
-      .get(this.apiURL + '/jobs')
+      .get(this.apiURL + '/jobs', { params })
       .subscribe((response: any) => this._jobs$$.next(response.data));
   }
 

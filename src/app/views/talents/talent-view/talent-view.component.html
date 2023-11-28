@@ -1,0 +1,39 @@
+<!-- Title : firstname and lastname of Profile/Talent-->
+<h2 mat-dialog-title>
+    <span class="d-flex justify-content-between">
+        <span>{{talent.last | uppercase}} {{talent.first | titlecase}}</span>
+    </span>
+</h2>
+<span style="position: absolute; top:0.5rem; right: 0.5rem;">
+    <button mat-icon-button mat-dialog-close class="close">
+        <mat-icon>close</mat-icon>
+    </button>
+</span>
+
+<!-- Sub-navigation : in talent-view -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a (click)="changeTab($event, 1)" class="nav-link" [class.active]="tab==1" href="#">Infos</a>
+    </li>
+    <li class="nav-item">
+        <a (click)="changeTab($event, 2)" class="nav-link" [class.active]="tab==2" href="#">Notes</a>
+    </li>
+    <li class="nav-item">
+        <a (click)="changeTab($event, 3)" class="nav-link" [class.active]="tab==3" href="#">CVs</a>
+    </li>
+    <li class="nav-item">
+        <a (click)="changeTab($event, 4)" class="nav-link" [class.active]="tab==4" href="#">Contrats</a>
+    </li>
+</ul>
+
+<!-- Content tabs-->
+<mat-dialog-content>
+    <!-- tabs content 1 : infos -->
+    <update-talent-form [talent]="talent" *ngIf="tab==1"></update-talent-form>
+    <!-- tabs content 2 : notes -->
+    <talent-notes *ngIf="tab==2"></talent-notes>
+    <!-- tabs content 3 : CV -->
+    <talent-resume [talent]="talent" *ngIf="tab==3"></talent-resume>
+    <!-- tabs content 4 : Contrats -->
+    <talent-contracts [talent]="talent" *ngIf="tab==4"></talent-contracts>
+</mat-dialog-content>

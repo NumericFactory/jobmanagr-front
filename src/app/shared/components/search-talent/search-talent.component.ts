@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 import { SkillModel } from 'src/app/core/models/skill.model';
 import { ITalentSearch } from 'src/app/core/models/talent-search.model';
 import { SkillGateway } from 'src/app/core/ports/skills.gateway';
@@ -24,18 +24,23 @@ export class SearchTalentComponent {
     public skillGateway: SkillGateway,
   ) { }
 
-
   ngOnInit(): void {
+
     this.skillGateway.getSkills();
+
     this.searchForm = new FormGroup({
       skill: this.skillControl,
       city: this.cityControl,
       tjmMax: this.tjmMaxControl
     });
+
+    this.searchForm.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe(() => this.searchTalentAction());
   }
 
-  selectSkillAction() {
-    let search: ITalentSearch = this.searchForm.value; // { skill: 'Angular', city: 'Paris', tjmMax: 0}
+  searchTalentAction() {
+    let search: ITalentSearch = this.searchForm.value; // {skill: 'Angular', city: 'Paris', tjmMax: 500}
     this.talentGateway.searchTalents(search);
   }
 

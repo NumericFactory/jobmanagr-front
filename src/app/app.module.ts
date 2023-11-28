@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
@@ -32,7 +34,12 @@ import { SearchTalentComponent } from './shared/components/search-talent/search-
 import { SkillGateway } from './core/ports/skills.gateway';
 import { SkillService } from './core/adapters/skill.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UpdateTalentFormComponent } from './views/talents/update-talent-form/update-talent-form.component';
+import { UpdateTalentFormComponent } from './views/talents/talent-view/update-talent-form/update-talent-form.component';
+import { TalentViewComponent } from './views/talents/talent-view/talent-view.component';
+import { TalentResumeComponent } from './views/talents/talent-view/talent-resume/talent-resume.component';
+import { TalentNotesComponent } from './views/talents/talent-view/talent-notes/talent-notes.component';
+import { TalentContractsComponent } from './views/talents/talent-view/talent-contracts/talent-contracts.component';
+import { AddSkillsComponent } from './shared/components/add-skills/add-skills.component';
 
 @NgModule({
 
@@ -51,7 +58,12 @@ import { UpdateTalentFormComponent } from './views/talents/update-talent-form/up
     ContextmenuComponent,
     MailtoComponent,
     InputFormTelComponent,
-    SearchTalentComponent
+    SearchTalentComponent,
+    TalentViewComponent,
+    TalentResumeComponent,
+    TalentNotesComponent,
+    TalentContractsComponent,
+
   ],
 
   imports: [
@@ -64,7 +76,10 @@ import { UpdateTalentFormComponent } from './views/talents/update-talent-form/up
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatChipsModule,
+    AddSkillsComponent
   ],
   providers: [
     { provide: JobGateway, useClass: JobService },
