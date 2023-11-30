@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { TalentModel } from 'src/app/core/models/talent.model';
 import { TalentGateway } from 'src/app/core/ports/talents.gateway';
 import { CountrycodephoneService } from 'src/app/shared/services/countrycodephone.service';
-import { TalentViewComponent } from '../talent-view/talent-view.component';
+import { TalentViewComponent } from '../../../../views/talent/talent-page/talents/talent-view/talent-view.component';
 
 @Component({
   selector: 'app-add-talent-form',

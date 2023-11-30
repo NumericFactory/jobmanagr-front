@@ -7,7 +7,7 @@ import { JobGateway } from 'src/app/core/ports/jobs.gateway';
   templateUrl: './add-job-form.component.html',
   styleUrls: ['./add-job-form.component.css'],
 })
-export class ModalDialogAddJobFormComponent {
+export class AddJobFormComponent {
   jobForm!: FormGroup;
 
   constructor(

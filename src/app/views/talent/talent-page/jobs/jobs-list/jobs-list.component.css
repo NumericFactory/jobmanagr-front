@@ -1,0 +1,26 @@
+tr {
+  cursor: pointer;
+}
+
+tr.selected td {
+  background-color: #dcdde6;
+}
+
+.status {
+  color: #777777;
+  margin-right: 5px;
+}
+
+.status.active {
+  color: #712cf9;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.step-list i {
+  margin-right: 5px;
+}

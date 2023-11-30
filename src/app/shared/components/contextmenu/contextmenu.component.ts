@@ -6,15 +6,15 @@ import {
   Inject,
   EventEmitter,
 } from '@angular/core';
-import { ModalDialogAddJobFormComponent } from 'src/app/views/jobs/add-job-form/add-job-form.component';
+import { AddJobFormComponent } from 'src/app/shared/components/contextmenu/add-job-form/add-job-form.component';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { AddTalentFormComponent } from 'src/app/views/talents/add-talent-form/add-talent-form.component';
-import { AddCustomerFormComponent } from 'src/app/views/customers/add-customer-form/add-customer-form.component';
+import { AddTalentFormComponent } from 'src/app/shared/components/contextmenu/add-talent-form/add-talent-form.component';
+import { AddCustomerFormComponent } from 'src/app/shared/components/contextmenu/add-customer-form/add-customer-form.component';
 
 @Component({
   selector: 'app-contextmenu',
@@ -43,7 +43,7 @@ export class ContextmenuComponent {
   openDialogCreateNewJob(ev: Event): void {
     ev.preventDefault();
     this.contextMenuIsOpenedEvent.emit(false);
-    const dialogRef = this.dialog.open(ModalDialogAddJobFormComponent, {
+    const dialogRef = this.dialog.open(AddJobFormComponent, {
       width: '750px',
       maxWidth: '85rem;',
       position: { top: '50px' },

@@ -1,11 +1,11 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { SkillModel } from 'src/app/core/models/skill.model';
@@ -17,12 +17,12 @@ import { SkillModel } from 'src/app/core/models/skill.model';
   styleUrls: ['./add-skills.component.css'],
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
     MatChipsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
   ],
 })
 export class AddSkillsComponent {

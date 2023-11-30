@@ -11,3 +11,8 @@ ul li a.active {
   background-color: rgb(44 59 249);
   color: aliceblue !important;
 }
+
+ul li a i {
+  color: aliceblue !important;
+  font-size: 24px;
+}

@@ -14,7 +14,9 @@ import { TalentGateway } from 'src/app/core/ports/talents.gateway';
 export class SearchTalentComponent {
 
   skills: SkillModel[] = [];
+
   searchForm!: FormGroup;
+
   skillControl = new FormControl('');
   cityControl = new FormControl('');
   tjmMaxControl = new FormControl('');
@@ -22,17 +24,19 @@ export class SearchTalentComponent {
   constructor(
     private talentGateway: TalentGateway,
     public skillGateway: SkillGateway,
-  ) { }
-
-  ngOnInit(): void {
-
-    this.skillGateway.getSkills();
-
+  ) {
     this.searchForm = new FormGroup({
       skill: this.skillControl,
       city: this.cityControl,
       tjmMax: this.tjmMaxControl
     });
+  }
+
+  ngOnInit(): void {
+
+    this.skillGateway.getSkills();
+
+
 
     this.searchForm.valueChanges
       .pipe(debounceTime(300))
