@@ -1,0 +1,55 @@
+.skills span.add-skill-btn {
+    display: inline-flex;
+    transform: translateY(7px);
+    background: #f3f6fc;
+    color: #b4b9c3;
+    transition-duration: .2s;
+}
+
+.skills span.add-skill-btn>mat-icon {
+    color: #777777;
+}
+
+.skills span.add-skill-btn:hover {
+    background: #f7f7f7;
+    color: #0050ef;
+    cursor: pointer;
+}
+
+.skills span.add-skill-btn:hover>mat-icon {
+    color: #0050ef;
+}
+
+.skills span {
+    margin-right: 5px;
+    display: inline-block;
+    background: #2e3271;
+    padding: 0px 3px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: aliceblue;
+}
+
+.skills span.pill {
+    display: flex;
+    align-items: center;
+}
+
+.skills span mat-icon.remove-skill {
+    opacity: .7;
+}
+
+.skills span mat-icon.remove-skill:hover {
+    opacity: 1;
+    color: #c9dbff;
+    text-shadow: 0 0 1px #ffffff;
+    cursor: pointer;
+}
+
+
+.skills span.add-skill {
+    background: none;
+    padding: 0;
+    height: 35px;
+}

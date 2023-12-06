@@ -34,9 +34,6 @@ export class SearchTalentComponent {
 
   ngOnInit(): void {
 
-    this.skillGateway.getSkills();
-
-
 
     this.searchForm.valueChanges
       .pipe(debounceTime(300))

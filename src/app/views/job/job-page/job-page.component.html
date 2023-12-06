@@ -1,0 +1,40 @@
+<div class="row">
+    <!-- pipeline-->
+    <div class="col-20 pipe">
+        <h2>Missions</h2>
+        <!-- step 1 - list of cards-->
+        <div cdkDropList #step0List="cdkDropList" [cdkDropListData]="step_0" [cdkDropListConnectedTo]="[step1List]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <job-card class="example-box" *ngFor="let item of step_0" [job]="item" cdkDrag></job-card>
+        </div>
+    </div>
+    <!-- step 2 - en cours de négo -->
+    <div class="col-20 pipe">
+        <h2>Prospection</h2>
+        <div cdkDropList #step1List="cdkDropList" [cdkDropListData]="step_1"
+            [cdkDropListConnectedTo]="[step0List, step2List]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <job-card class="example-box" *ngFor="let item of step_1" [job]="item" cdkDrag></job-card>
+        </div>
+
+    </div>
+    <!-- step 3 -signature -->
+    <div class="col-20 pipe">
+        <h2>Signé</h2>
+        <div cdkDropList #step2List="cdkDropList" [cdkDropListData]="step_2"
+            [cdkDropListConnectedTo]="[step1List, step3List]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <job-card class="example-box" *ngFor="let item of step_2" [job]="item" cdkDrag></job-card>
+        </div>
+    </div>
+    <!-- step 4 -Terminée-->
+    <div class="col-20 pipe">
+        <h2>En cours</h2>
+        <div cdkDropList #step3List="cdkDropList" [cdkDropListData]="step_3" [cdkDropListConnectedTo]="[step2List]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <job-card class="example-box" *ngFor="let item of step_3" [job]="item" cdkDrag></job-card>
+        </div>
+    </div>
+    <!-- step 5 -Payée-->
+    <div class="col-20 pipe">
+        <h2>Payée</h2>
+    </div>
+</div>

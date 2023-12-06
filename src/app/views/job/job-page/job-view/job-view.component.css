@@ -1,0 +1,67 @@
+.customer,
+.mission {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
+.customer h3,
+.mission h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.customer p,
+.mission p,
+.mission li {
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mission p span {
+    margin-left: 10px;
+}
+
+.mission ul {
+    padding-left: 0;
+}
+
+.mission li::before {
+    content: "•";
+    margin-right: 5px;
+}
+
+.customer .address {
+    font-size: 15px;
+    color: #999;
+}
+
+.customer .address p {
+    margin: 0;
+}
+
+.isOrganismeFormation {
+    margin-bottom: 0;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.isOrganismeFormation p {
+    display: flex;
+    align-items: center;
+}
+
+.isOrganismeFormation p mat-icon {
+    color: blue
+}
+
+.remote {
+    display: flex;
+    align-items: center;
+}

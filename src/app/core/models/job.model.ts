@@ -10,25 +10,27 @@ export class JobModel {
   duration: number;
   tjmin: number;
   tjmax: number;
+  city?: string;
+  country?: string;
   customer_id: number;
   customer?: CustomerModel;
-  skills?: SkillModel[];
-  info?: string;
+  skills: SkillModel[];
   status?: number;
 
   constructor(data: any) {
     this.id = data.id;
-    this.title = data.last;
+    this.title = data.title;
     this.description = data.description;
     this.isRemote = data.isRemote;
     this.startDate = data.startDate;
     this.duration = data.duration;
-    this.tjmin = data.xp;
-    this.tjmax = data.remote;
+    this.tjmin = data.tjmin;
+    this.tjmax = data.tjmax;
+    this.city = data.city;
+    this.country = data.country;
     this.customer_id = data.customer_id | 0;
     this.customer = new CustomerModel(data.customer);
-    this.skills = data.phone;
-    this.info = data.info;
+    this.skills = data.skills ? data.skills.map((skill: any) => new SkillModel(skill)) : [];
     this.status = data.status;
   }
 }

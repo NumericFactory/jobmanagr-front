@@ -100,7 +100,6 @@ export class TalentService implements TalentGateway {
 
 
   addTalentSkill(talent: TalentModel, skill: SkillModel): void {
-
     this.http.post(this.apiURL + '/talents/' + talent.id + '/skills', { skill_id: skill.id })
       .pipe(
         map((response: any) => response.data.map((skill: any) => new SkillModel(skill)))

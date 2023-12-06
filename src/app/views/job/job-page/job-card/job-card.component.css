@@ -1,0 +1,18 @@
+mat-card.job-card {
+    width: 100%;
+    background-color: #764dff;
+    color: #fff;
+}
+
+mat-card.job-card .mat-mdc-card-title {
+    font-size: 17px;
+}
+
+.mat-mdc-card-subtitle {
+    color: #dfb9ff;
+}
+
+.mat-mdc-card-content>:last-child:not(.mat-mdc-card-footer) {
+    margin-bottom: 0;
+    color: #ddd3ff;
+}

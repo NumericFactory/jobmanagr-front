@@ -45,8 +45,9 @@
             </td> -->
 
             <td>
-                <span class="badge rounded-pill text-bg-dark me-1" *ngFor="let spe of job.skills">{{spe.title |
-                    titlecase}}</span>
+                <span *ngFor="let spe of job.skills" class="skill-badge">
+                    {{spe.title}}
+                </span>
             </td>
 
             <td style="text-align:center">

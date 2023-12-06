@@ -1,5 +1,6 @@
 import { JobModel } from '../models/job.model';
 import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { SkillModel } from '../models/skill.model';
 
 export interface IparamsGetJobs {
   withCustomer?: boolean;
@@ -15,5 +16,12 @@ export abstract class JobGateway {
 
   abstract addNewJob(job: JobModel): void;
 
+  abstract updateJob(jobId: number, job: JobModel): void;
+
   abstract deleteJob(jobId: number): void;
+
+  abstract addJobSkill(talent: JobModel, skill: SkillModel): void
+  abstract removeJobSkill(talent: JobModel, skill: SkillModel): void
+
+
 }

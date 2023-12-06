@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomerGateway } from 'src/app/core/ports/customers.gateway';
 import { JobGateway } from 'src/app/core/ports/jobs.gateway';
 
 @Component({
@@ -13,6 +14,8 @@ export class AddJobFormComponent {
   constructor(
     private fb: FormBuilder,
     private jobSvc: JobGateway,
+    public customerSvc: CustomerGateway
+
   ) {
     this.jobForm = this.fb.group({
       title: ['', Validators.required],
@@ -21,7 +24,7 @@ export class AddJobFormComponent {
       startDate: [''],
       tjmin: [''],
       tjmax: [''],
-      info: [''],
+      description: [''],
       isRemote: ['', Validators.required],
       city: [''],
       country: [''],
@@ -29,7 +32,11 @@ export class AddJobFormComponent {
     });
   }
 
-  submitJobForm() {
+  ngOnInit(): void {
+    this.customerSvc.getCustomers();
+  }
+
+  submitNewJobFormAction() {
     this.jobSvc.addNewJob(this.jobForm.value);
   }
 }

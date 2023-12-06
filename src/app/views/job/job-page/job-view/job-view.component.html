@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>
+    <span class="d-flex justify-content-between">
+        <span>{{job.title | uppercase}} </span>
+    </span>
+</h2>
+<span style="position: absolute; top:0.5rem; right: 0.5rem;">
+    <button mat-icon-button mat-dialog-close class="close">
+        <mat-icon>close</mat-icon>
+    </button>
+</span>
+
+
+<mat-dialog-content>
+
+    <!-- JOB detail-->
+    <div class="row">
+        <job-status-line [jobStatus]="job.status || 0"></job-status-line>
+        <div class="col-12 col-lg-8 mission">
+
+
+
+
+            <div class="d-flex align-items-center justify-content-between">
+                <h3>{{job.title | uppercase}}</h3>
+                <div>
+                    <button mat-icon-button type="button" (click)="setEditableJob($event, job)">
+                        <mat-icon *ngIf="editableFormName!='jobForm'">edit</mat-icon>
+                        <mat-icon *ngIf="editableFormName=='jobForm'">cancel</mat-icon>
+                    </button>
+                    <button mat-icon-button type="button"><mat-icon>content_copy</mat-icon></button>
+                </div>
+            </div>
+            <div *ngIf="editableFormName!='jobForm'">
+                <ul>
+                    <li>Durée : {{job.duration}} jours</li>
+                    <li>Démarrage : {{job.startDate | date : 'dd/MM/yyyy'}}</li>
+                    <li>Lieu {{job.city}}, {{job.country}}</li>
+                    <span *ngIf="job.isRemote">
+                        <li><mat-icon>check</mat-icon> Remote</li>
+                    </span>
+                </ul>
+                <p>
+                    <strong>Précisions:</strong>
+                    <span>{{job.description}}</span>
+                </p>
+            </div>
+            <!-- <div *ngIf="editableFormName=='jobForm'">
+                <update-job-form [job]="job"></update-job-form>
+            </div> -->
+        </div>
+
+        <!-- CUSTOMER detail-->
+        <div class="col-12 col-lg-4 customer">
+            <div class="d-flex align-items-center justify-content-between">
+                <h3>{{job.customer?.name}}</h3>
+                <div>
+                    <button mat-icon-button type="button" (click)="setEditableCustomer()">
+                        <mat-icon *ngIf="editableFormName!='customerForm'">edit</mat-icon>
+                        <mat-icon *ngIf="editableFormName=='customerForm'">cancel</mat-icon>
+                    </button>
+                    <button mat-icon-button type="button"><mat-icon>content_copy</mat-icon></button>
+                </div>
+            </div>
+            <p>{{job.customer?.siret}}</p>
+            <div *ngIf="job.customer?.isorganismeformation" class="isOrganismeFormation">
+                <p><mat-icon>check</mat-icon> Organisme de formation</p>
+            </div>
+            <div class="address">
+                <p>{{job.customer?.address?.address}}</p>
+                <p>{{job.customer?.address?.cp}} {{job.customer?.address?.city}}</p>
+                <p>{{job.customer?.address?.country}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <pre>{{job | json}}</pre> -->
+
+</mat-dialog-content>

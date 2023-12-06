@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CustomerGateway } from '../ports/customers.gateway';
 import { CustomerModel } from '../models/customer.model';
@@ -20,7 +20,8 @@ export class CustomerService implements CustomerGateway {
   getCustomers(): void {
     this.http
       .get(this.apiURL + '/customers')
-      .subscribe((response: any) => this._customers$$.next(response.data));
+      .pipe(map((response: any) => response.data.map((customer: any) => new CustomerModel(customer))))
+      .subscribe((customers: CustomerModel[]) => this._customers$$.next(customers));
   }
 
   getCustomer(customer: CustomerModel): void {

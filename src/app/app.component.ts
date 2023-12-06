@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SkillGateway } from './core/ports/skills.gateway';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,10 @@ export class AppComponent {
   left: string = '0px';
   contextMenuIsOpened: boolean = false;
 
+  constructor(private skillGateway: SkillGateway) { }
+
   ngOnInit() {
-    // this.jobGateway.jobs$.subscribe({
-    //   next: (data) => (this.jobs = data),
-    // });
+    this.skillGateway.getSkills();
   }
 
   onRightClick(ev: any) {

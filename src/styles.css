@@ -27,6 +27,22 @@
   color: aliceblue !important;
 }
 
+*[mat-dialog-content],
+.mat-mdc-dialog-container .mdc-dialog__content {
+  padding: 1.4% 2.7% !important;
+  padding-right: 40px !important;
+}
+
+.mdc-dialog__actions {
+  padding-right: 40px !important;
+  background: #f1f1f1;
+}
+
+[mat-dialog-close] .mat-icon,
+button.close .mat-icon {
+  color: #ececec !important;
+}
+
 .form-control:focus {
   background: #fafbfb;
 }
@@ -96,6 +112,17 @@
   font-size: 85%;
   margin-left: 2px;
   font-weight: lighter;
+}
+
+span.skill-badge {
+  margin-right: 5px;
+  display: inline-block;
+  background: #2e3271;
+  padding: 0px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: aliceblue;
 }
 
 html,

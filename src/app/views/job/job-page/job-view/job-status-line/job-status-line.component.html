@@ -1,0 +1,62 @@
+<ul>
+
+    <li class="tracker__item">
+        <div class="tracker__wrapper">
+            <div class="tracker__icon">
+                <span class="tracker__check" [class.stepisvalid]="jobStatus>0">
+                    <mat-icon>check_circle</mat-icon>
+                </span>
+                <!-- <mat-icon class="illustration-point">location_searching</mat-icon> -->
+            </div>
+            <div class="tracker__status">
+                <span>En prospection</span>
+            </div>
+        </div>
+    </li>
+
+    <li class="tracker__item">
+        <div class="tracker__wrapper">
+            <div class="tracker__icon">
+                <span class="tracker__check" [class.stepisvalid]="jobStatus>1">
+                    <mat-icon>check_circle</mat-icon>
+                </span>
+                <!-- <mat-icon class="illustration-point">draw</mat-icon> -->
+            </div>
+            <div class="tracker__status">
+                <span>Signé</span>
+            </div>
+        </div>
+    </li>
+
+    <li class="tracker__item">
+        <div class="tracker__wrapper">
+            <div class="tracker__icon">
+                <span class="tracker__check" [class.stepisvalid]="jobStatus>2">
+                    <mat-icon>check_circle</mat-icon>
+                </span>
+                <!-- <mat-icon class="illustration-point">engineering</mat-icon> -->
+            </div>
+            <div class="tracker__status">
+                <span>En cours</span>
+            </div>
+        </div>
+        <!-- <div class="tracker__date">
+            <span>22 Nov 2023</span>
+        </div> -->
+    </li>
+
+    <li class="tracker__item">
+        <div class="tracker__wrapper">
+            <div class="tracker__icon">
+                <span class="tracker__check" [class.stepisvalid]="jobStatus>3">
+                    <mat-icon>check_circle</mat-icon>
+                </span>
+                <!-- <mat-icon class="illustration-point">euro_symbol</mat-icon> -->
+            </div>
+            <div class="tracker__status">
+                <span>Payé</span>
+            </div>
+        </div>
+    </li>
+
+</ul>

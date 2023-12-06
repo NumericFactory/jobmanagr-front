@@ -15,6 +15,30 @@ interface IAddress {
   country: string;
 }
 
+class Address {
+  address: string;
+  complementaddress: string;
+  cp: string;
+  city: string;
+  country: string;
+  constructor(customerData: any) {
+    if (customerData) {
+      this.address = customerData.address ? customerData.address : '';
+      this.complementaddress = customerData.complementaddress ? customerData.complementaddress : '';
+      this.cp = customerData.cp ? customerData.cp : '';
+      this.city = customerData.city ? customerData.city : '';
+      this.country = customerData.country ? customerData.country : '';
+    }
+    else {
+      this.address = '';
+      this.complementaddress = '';
+      this.cp = '';
+      this.city = '';
+      this.country = '';
+    }
+  }
+}
+
 export class CustomerModel {
   id: number;
   name: string;
@@ -33,7 +57,6 @@ export class CustomerModel {
     this.siren = data.siren;
     this.nic = data.nic;
     this.siret = data.siren + data.nic;
-    this.address = data.address;
-    this.contacts = data.contacts;
+    this.address = new Address(data);
   }
 }

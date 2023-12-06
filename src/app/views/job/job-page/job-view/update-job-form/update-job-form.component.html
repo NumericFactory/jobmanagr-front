@@ -1,17 +1,35 @@
 <h2 mat-dialog-title>
     <span class="d-flex justify-content-between">
-        <span>Ajouter un Job</span>
+        <span>Mettre à jour ce job</span>
     </span>
 </h2>
 <span style="position: absolute; top:0.5rem; right: 0.5rem;">
-    <button mat-icon-button mat-dialog-close class="close">
+    <button mat-icon-button [mat-dialog-close]="job" cdkFocusInitial class="close">
         <mat-icon>close</mat-icon>
     </button>
 </span>
-<form (submit)="submitNewJobFormAction()" [formGroup]="jobForm">
+<form (submit)="updateJobFormAction()" [formGroup]="jobForm">
     <mat-dialog-content>
 
         <div class="row">
+
+            <!-- skills -->
+            <div class="mb-3 col-12">
+                <span class="skills">
+                    <span *ngFor="let skill of job.skills">
+                        <span class="pill">
+                            <span>{{skill.title}}</span>
+                            <mat-icon class="remove-skill" (click)="removeSkillAction(skill)">close</mat-icon>
+                        </span>
+                    </span>
+                    <!-- add skills form -->
+                    <span class="add-skill">
+                        <add-skills (selectedSkillEvent)="addSkillAction($event)" [allskills]="allskills"
+                            [excludeskills]="job.skills"></add-skills>
+                    </span>
+
+                </span>
+            </div>
 
             <div class="mb-3 col-6 form-floating">
                 <input formControlName="title" type="text" class="form-control">
@@ -20,7 +38,8 @@
 
             <div class="mb-3 col-6 form-floating">
                 <select formControlName="customer_id" type="text" class="form-control">
-                    <option *ngFor="let customer of customerSvc.customers$ | async" [value]="customer.id">
+                    <option *ngFor="let customer of customerSvc.customers$ | async" [value]="customer.id"
+                        [selected]="customer.id===job.customer_id">
                         {{customer.name}}</option>
                 </select>
                 <label>Client</label>
@@ -30,8 +49,6 @@
                 <input formControlName="duration" type="text" class="form-control">
                 <label>Durée (j)</label>
             </div>
-
-
 
             <div class="mb-3 col-6 form-floating">
                 <input formControlName="startDate" type="date" class="form-control">
@@ -49,7 +66,8 @@
             </div>
 
             <div class="mb-3 form-floating">
-                <textarea formControlName="description" rows="7" class="form-control"></textarea>
+                <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5"
+                    formControlName="description" class="form-control"></textarea>
                 <label>Description</label>
             </div>
 
@@ -71,6 +89,7 @@
     </mat-dialog-content>
 
     <mat-dialog-actions align="end">
-        <button type="submit" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sauvegarder</button>
+        <button type="button" mat-button color="primary" [mat-dialog-close]="job">Fermer</button>
+        <button type="submit" mat-button color="primary" [mat-dialog-close]="job">Sauvegarder</button>
     </mat-dialog-actions>
 </form>
